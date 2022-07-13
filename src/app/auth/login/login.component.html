@@ -1,0 +1,35 @@
+<!-- reactive forms example component -->
+<section>
+  <form class="flex" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="Your email"
+        formControlName="email"
+      />
+      <mat-hint>Please enter a valid email.</mat-hint>
+      <mat-error>Invalid email</mat-error>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Should be at least 6 characters long.">
+      <input
+        type="password"
+        matInput
+        placeholder="Your password"
+        formControlName="password"
+      />
+      <mat-hint>Please enter a your password.</mat-hint>
+      <mat-error>Missing password.</mat-error>
+    </mat-form-field>
+
+    <button
+      type="submit"
+      [disabled]="loginForm.invalid"
+      mat-raised-button
+      color="primary"
+    >
+      Login
+    </button>
+  </form>
+</section>
