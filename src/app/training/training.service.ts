@@ -12,7 +12,7 @@ export class TrainingrService {
     { id: 'squats', name: 'Squats', duration: 120, calories: 20 },
     { id: 'pushups', name: 'Pushups', duration: 60, calories: 8 },
     { id: 'pullups', name: 'Pullups', duration: 60, calories: 10 },
-    { id: 'crunches', name: 'Crunches', duration: 30, calories: 8 },
+    { id: 'crunches', name: 'Crunches', duration: 20, calories: 8 },
   ];
 
   private runningExercise: Exercise;
@@ -45,7 +45,7 @@ export class TrainingrService {
     this.exercises.push({
       ...this.runningExercise,
       duration: this.runningExercise.duration * (progress / 100),
-      calories: this.runningExercise.duration * (progress / 100),
+      calories: this.runningExercise.calories * (progress / 100),
       date: new Date(),
       state: 'cancelled',
     });
@@ -55,5 +55,9 @@ export class TrainingrService {
 
   getRunningExercise() {
     return { ...this.runningExercise };
+  }
+
+  getCompletedOrCancelledExercises() {
+    return this.exercises.slice();
   }
 }
