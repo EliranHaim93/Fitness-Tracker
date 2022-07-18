@@ -1,0 +1,34 @@
+@media screen and (max-width: 599px) {
+  .nav-links__container {
+    display: none;
+  }
+}
+@media screen and (min-width: 600px) {
+  .btn__sidenav {
+    display: none;
+  }
+}
+.nav-space {
+  width: 100%;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  list-style: none;
+}
+.nav-caption {
+  display: inline-block;
+  padding-left: 6px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover,
+a:active {
+  color: lightgray;
+}

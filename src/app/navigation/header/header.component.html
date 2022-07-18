@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <div>
+    <button class="btn__sidenav" mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon> menu </mat-icon>
+    </button>
+  </div>
+
+  <div>
+    <a routerLink="/">LOGO</a>
+  </div>
+
+  <div class="nav-space"></div>
+  <div class="nav-links__container">
+    <ul class="nav-links">
+      <li *ngIf="!isAuth">
+        <a routerLink="/signup">Signup</a>
+      </li>
+      <li *ngIf="!isAuth">
+        <a routerLink="/login">Login</a>
+      </li>
+      <li *ngIf="isAuth">
+        <a routerLink="/training">Training</a>
+      </li>
+      <li>
+        <a *ngIf="isAuth" style="cursor: pointer" (click)="onLogout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

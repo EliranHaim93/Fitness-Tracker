@@ -1,0 +1,22 @@
+@media screen and (min-width: 960px) {
+  .welcome__categories {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 20px;
+  }
+}
+@media screen and (max-width: 959px) {
+  .welcome__categories {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.welcome__container {
+  text-align: center;
+}
+
+.welcome__categories {
+  display: flex;
+}
