@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AuthModule } from './auth/auth.module';
-import { TrainingModule } from './training/training.module';
 
 //component imports
 import { AppComponent } from './app.component';
@@ -36,7 +35,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
     provideFirestore(() => getFirestore()),
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
-    TrainingModule,
+    AngularFireModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
