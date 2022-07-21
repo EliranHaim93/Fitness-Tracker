@@ -1,11 +1,10 @@
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AuthData } from './auth-data';
-import { User } from './user';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 import { TrainingrService } from '../training/training.service';
+import { UiService } from '../ui.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +16,8 @@ export class AuthService {
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    private trainingService: TrainingrService
+    private trainingService: TrainingrService,
+    private uiService: UiService
   ) {}
 
   initAuthListener() {
@@ -36,19 +36,29 @@ export class AuthService {
   }
 
   registerUser(authData: AuthData) {
+    this.uiService.loadingStateChanged.next(true);
     this.afAuth
       .createUserWithEmailAndPassword(authData.email, authData.password)
-      .then((result) => {})
-      .catch((err) => console.log(err));
+      .then((result) => {
+        this.uiService.loadingStateChanged.next(false);
+      })
+      .catch((err) => {
+        this.uiService.loadingStateChanged.next(false);
+        this.uiService.showSnackbar(err.message, null, 3000);
+      });
   }
 
   login(authData: AuthData) {
+    this.uiService.loadingStateChanged.next(true);
     this.afAuth
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then((result) => {
-        console.log(result);
+        this.uiService.loadingStateChanged.next(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        this.uiService.loadingStateChanged.next(false);
+        this.uiService.showSnackbar(err.message, null, 3000);
+      });
   }
 
   logout() {

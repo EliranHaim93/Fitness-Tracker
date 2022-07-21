@@ -6,7 +6,7 @@
   </div>
 
   <div>
-    <a routerLink="/">LOGO</a>
+    <a routerLink="/">NG Fitness</a>
   </div>
 
   <div class="nav-space"></div>
@@ -22,7 +22,9 @@
         <a routerLink="/training">Training</a>
       </li>
       <li>
-        <a *ngIf="isAuth" style="cursor: pointer" (click)="onLogout()">Logout</a>
+        <a *ngIf="isAuth" style="cursor: pointer" (click)="onLogout()"
+          >Logout</a
+        >
       </li>
     </ul>
   </div>
