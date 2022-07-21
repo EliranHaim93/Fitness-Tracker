@@ -14,7 +14,7 @@ export class TrainingComponent implements OnInit {
   constructor(private trainingService: TrainingrService) {}
 
   ngOnInit(): void {
-    this.exerciseSubscription = this.trainingService.exerceseChanged.subscribe(
+    this.exerciseSubscription = this.trainingService.exerciseChanged.subscribe(
       (exercise) => {
         if (exercise) {
           this.ongoingTraining = true;
