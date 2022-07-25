@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 
 import { UiService } from 'src/app/ui.service';
 import { AuthService } from '../auth.service';
+import { Store } from '@ngrx/store';
+import * as fromApp from '../../app.reducer';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +17,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   isLoading = false;
   private loadingSubs: Subscription;
 
-  constructor(private authService: AuthService, private uiService: UiService) {}
+  constructor(
+    private authService: AuthService,
+    private uiService: UiService,
+    private store: Store<{ ui: fromApp.State }>
+  ) {}
 
   ngOnInit(): void {
+    this.store.subscribe((data) => console.log(data));
     this.loadingSubs = this.uiService.loadingStateChanged.subscribe(
       (isLoading) => {
         this.isLoading = isLoading;

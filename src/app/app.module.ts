@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AuthModule } from './auth/auth.module';
+import { StoreModule } from '@ngrx/store';
 
 //component imports
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { appReduce } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
     AngularFireModule,
+    StoreModule.forRoot({ ui: appReduce }),
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
