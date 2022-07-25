@@ -30,7 +30,7 @@ export function trainingReducer(state = initialState, action: TrainingActions) {
     case SET_AVAILABLE_TRAININGS:
       return {
         ...state,
-        availabaleExercises: action.payload,
+        availableExercises: action.payload,
       };
     case SET_FINISHED_TRAININGS:
       return {

@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Exercise } from '../exercise.model';
 import { TrainingrService } from '../training.service';
 import { Observable } from 'rxjs';
-import { UiService } from '../../ui.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../app.reducer';
 import * as fromTraining from '../training.reducer';
@@ -19,7 +18,6 @@ export class NewTrainingComponent implements OnInit {
 
   constructor(
     private trainingServiec: TrainingrService,
-    private uiService: UiService,
     private store: Store<fromTraining.State>
   ) {}
 
@@ -27,7 +25,6 @@ export class NewTrainingComponent implements OnInit {
     this.isLoading$ = this.store.select(fromRoot.getIsLoading);
     this.exercises$ = this.store.select(fromTraining.getAvailableExercises);
     this.fetchExercises();
-    console.log(this.exercises$);
   }
 
   onStartTraining(form: NgForm) {
