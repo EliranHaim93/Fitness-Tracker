@@ -12,17 +12,17 @@
   <div class="nav-space"></div>
   <div class="nav-links__container">
     <ul class="nav-links">
-      <li *ngIf="!isAuth">
+      <li *ngIf="!(isAuth$ | async)">
         <a routerLink="/signup">Signup</a>
       </li>
-      <li *ngIf="!isAuth">
+      <li *ngIf="!(isAuth$ | async)">
         <a routerLink="/login">Login</a>
       </li>
-      <li *ngIf="isAuth">
+      <li *ngIf="isAuth$ | async">
         <a routerLink="/training">Training</a>
       </li>
       <li>
-        <a *ngIf="isAuth" style="cursor: pointer" (click)="onLogout()"
+        <a *ngIf="isAuth$ | async" style="cursor: pointer" (click)="onLogout()"
           >Logout</a
         >
       </li>
